@@ -13,7 +13,7 @@ In case you want to use a different port specify it as command line argument:
 % python3 $(pwd)/basicserver.py 1234
 ````
 
-#Application packaging 
+# Application packaging 
 Run [build.sh](./build.sh) script to package the application in a docker container, at the end of the process the script print some additional instructions to push the image in the docker registry.
 
 Fell free to change below variables inside build.sh script:
