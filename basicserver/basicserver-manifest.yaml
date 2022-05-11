@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: python3-basicserver
+  name: python3-basicserver
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: python3-basicserver
+  template:
+    metadata:
+      labels:
+        app: python3-basicserver
+    spec:
+      containers:
+      - image: emmerson/python3-basicserver:1.0
+        name: python3-basicserver
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: python3-basicserver
+  name: python3-basicserver
+spec:
+  ports:
+  - name: 5678-8080
+    port: 5678
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: python3-basicserver
+  type: LoadBalancer
+  
