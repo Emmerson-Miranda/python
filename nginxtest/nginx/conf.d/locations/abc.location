@@ -1,0 +1,13 @@
+
+        location /abc {
+            modsecurity on;
+            modsecurity_rules_file /etc/modsecurity.d/include.conf;
+
+            set $upstream /_business/abc;
+            js_content processRequest;
+        }
+
+        location = /_business/abc {
+            internal;
+            proxy_pass http://upstream:10003/microservice/myservice; 
+        }

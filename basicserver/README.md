@@ -1,4 +1,4 @@
-# Simple Server
+# Simple Server (by Emmerson Miranda)
 This project is a simple Python3 HTTP server.
 
 # The Python Application
