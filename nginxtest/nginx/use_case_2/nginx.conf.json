@@ -1,0 +1,131 @@
+{
+    "status": "failed",
+    "errors": [
+        {
+            "file": "nginx/use_case_2/nginx.conf",
+            "error": "[Errno 2] No such file or directory: 'nginx/use_case_2/mime.types'",
+            "line": 18
+        }
+    ],
+    "config": [
+        {
+            "file": "nginx/use_case_2/nginx.conf",
+            "status": "failed",
+            "errors": [
+                {
+                    "error": "[Errno 2] No such file or directory: 'nginx/use_case_2/mime.types'",
+                    "line": 18
+                }
+            ],
+            "parsed": [
+                {
+                    "directive": "load_module",
+                    "line": 1,
+                    "args": [
+                        "modules/ngx_http_modsecurity_module.so"
+                    ]
+                },
+                {
+                    "directive": "user",
+                    "line": 3,
+                    "args": [
+                        "nginx"
+                    ]
+                },
+                {
+                    "directive": "events",
+                    "line": 5,
+                    "args": [],
+                    "block": [
+                        {
+                            "directive": "worker_connections",
+                            "line": 6,
+                            "args": [
+                                "1024"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "directive": "http",
+                    "line": 9,
+                    "args": [],
+                    "block": [
+                        {
+                            "directive": "keepalive_timeout",
+                            "line": 11,
+                            "args": [
+                                "120"
+                            ]
+                        },
+                        {
+                            "directive": "server",
+                            "line": 13,
+                            "args": [],
+                            "block": [
+                                {
+                                    "directive": "listen",
+                                    "line": 14,
+                                    "args": [
+                                        "80"
+                                    ]
+                                },
+                                {
+                                    "directive": "server_name",
+                                    "line": 15,
+                                    "args": [
+                                        "localhost"
+                                    ]
+                                },
+                                {
+                                    "directive": "include",
+                                    "line": 16,
+                                    "args": [
+                                        "conf.d/locations/*.location"
+                                    ],
+                                    "includes": []
+                                },
+                                {
+                                    "directive": "include",
+                                    "line": 18,
+                                    "args": [
+                                        "mime.types"
+                                    ],
+                                    "includes": []
+                                },
+                                {
+                                    "directive": "error_page",
+                                    "line": 20,
+                                    "args": [
+                                        "500",
+                                        "502",
+                                        "503",
+                                        "504",
+                                        "/50x.html"
+                                    ]
+                                },
+                                {
+                                    "directive": "location",
+                                    "line": 21,
+                                    "args": [
+                                        "=",
+                                        "/50x.html"
+                                    ],
+                                    "block": [
+                                        {
+                                            "directive": "root",
+                                            "line": 22,
+                                            "args": [
+                                                "html"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

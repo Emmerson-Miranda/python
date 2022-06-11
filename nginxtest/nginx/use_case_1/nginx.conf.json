@@ -1,0 +1,249 @@
+{
+    "status": "ok",
+    "errors": [],
+    "config": [
+        {
+            "file": "nginx/use_case_1/nginx.conf",
+            "status": "ok",
+            "errors": [],
+            "parsed": [
+                {
+                    "directive": "load_module",
+                    "line": 1,
+                    "args": [
+                        "modules/ngx_http_modsecurity_module.so"
+                    ]
+                },
+                {
+                    "directive": "user",
+                    "line": 3,
+                    "args": [
+                        "nginx"
+                    ]
+                },
+                {
+                    "directive": "events",
+                    "line": 5,
+                    "args": [],
+                    "block": [
+                        {
+                            "directive": "worker_connections",
+                            "line": 6,
+                            "args": [
+                                "1024"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "directive": "http",
+                    "line": 9,
+                    "args": [],
+                    "block": [
+                        {
+                            "directive": "keepalive_timeout",
+                            "line": 11,
+                            "args": [
+                                "120"
+                            ]
+                        },
+                        {
+                            "directive": "server",
+                            "line": 13,
+                            "args": [],
+                            "block": [
+                                {
+                                    "directive": "listen",
+                                    "line": 14,
+                                    "args": [
+                                        "80"
+                                    ]
+                                },
+                                {
+                                    "directive": "server_name",
+                                    "line": 15,
+                                    "args": [
+                                        "localhost"
+                                    ]
+                                },
+                                {
+                                    "directive": "include",
+                                    "line": 16,
+                                    "args": [
+                                        "conf.d/locations/*.location"
+                                    ],
+                                    "includes": [
+                                        1,
+                                        2
+                                    ]
+                                },
+                                {
+                                    "directive": "error_page",
+                                    "line": 18,
+                                    "args": [
+                                        "500",
+                                        "502",
+                                        "503",
+                                        "504",
+                                        "/50x.html"
+                                    ]
+                                },
+                                {
+                                    "directive": "location",
+                                    "line": 19,
+                                    "args": [
+                                        "=",
+                                        "/50x.html"
+                                    ],
+                                    "block": [
+                                        {
+                                            "directive": "root",
+                                            "line": 20,
+                                            "args": [
+                                                "html"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "file": "nginx/use_case_1/conf.d/locations/abc.location",
+            "status": "ok",
+            "errors": [],
+            "parsed": [
+                {
+                    "directive": "location",
+                    "line": 2,
+                    "args": [
+                        "/abc"
+                    ],
+                    "block": [
+                        {
+                            "directive": "modsecurity",
+                            "line": 3,
+                            "args": [
+                                "on"
+                            ]
+                        },
+                        {
+                            "directive": "modsecurity_rules_file",
+                            "line": 4,
+                            "args": [
+                                "/etc/modsecurity.d/include.conf"
+                            ]
+                        },
+                        {
+                            "directive": "set",
+                            "line": 6,
+                            "args": [
+                                "$upstream",
+                                "/_business/abc"
+                            ]
+                        },
+                        {
+                            "directive": "js_content",
+                            "line": 7,
+                            "args": [
+                                "processRequest"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "directive": "location",
+                    "line": 10,
+                    "args": [
+                        "=",
+                        "/_business/abc"
+                    ],
+                    "block": [
+                        {
+                            "directive": "internal",
+                            "line": 11,
+                            "args": []
+                        },
+                        {
+                            "directive": "proxy_pass",
+                            "line": 12,
+                            "args": [
+                                "http://upstream:10003/microservice/myservice"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "file": "nginx/use_case_1/conf.d/locations/def.location",
+            "status": "ok",
+            "errors": [],
+            "parsed": [
+                {
+                    "directive": "location",
+                    "line": 2,
+                    "args": [
+                        "/def"
+                    ],
+                    "block": [
+                        {
+                            "directive": "modsecurity",
+                            "line": 3,
+                            "args": [
+                                "on"
+                            ]
+                        },
+                        {
+                            "directive": "modsecurity_rules_file",
+                            "line": 4,
+                            "args": [
+                                "/etc/modsecurity.d/include.conf"
+                            ]
+                        },
+                        {
+                            "directive": "set",
+                            "line": 6,
+                            "args": [
+                                "$upstream",
+                                "/_business/def"
+                            ]
+                        },
+                        {
+                            "directive": "js_content",
+                            "line": 7,
+                            "args": [
+                                "processRequest"
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "directive": "location",
+                    "line": 10,
+                    "args": [
+                        "=",
+                        "/_business/def"
+                    ],
+                    "block": [
+                        {
+                            "directive": "internal",
+                            "line": 11,
+                            "args": []
+                        },
+                        {
+                            "directive": "proxy_pass",
+                            "line": 12,
+                            "args": [
+                                "http://upstream:10003/microservice/myservice"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

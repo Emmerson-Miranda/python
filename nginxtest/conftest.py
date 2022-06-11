@@ -6,16 +6,26 @@ import nginx_utils
 @pytest.fixture(scope="class")
 def nginx_json():
     """ 
-    Convert nginx.conf file specified in the parameter 'filename' to a JSON object using 'crossplane' application.
+    Load NGINX configuration from use case 1.
     """
-    print('\n---  Fixture nginx json object ---\n')
     nu = nginx_utils.NginxUtils()
-    return nu.crossplane_output('nginx/nginx.conf')
+    return nu.crossplane_output('nginx/use_case_1/nginx.conf', True)
+
+
+@pytest.fixture(scope="class")
+def nginx_json_faulty():
+    """ 
+    Load NGINX configuration from use case 2.
+    """
+    nu = nginx_utils.NginxUtils()
+    return nu.crossplane_output('nginx/use_case_2/nginx.conf', True)
 
 
 @pytest.fixture(scope="class")
 def locations(nginx_json):
-    print('\n---  Fixture locations from nginx json object ---\n')
+    """ 
+    Extract locations from NGINX configuration.
+    """
     nu = nginx_utils.NginxUtils()
     locations = nu.get_locations('root', nginx_json)
     return locations

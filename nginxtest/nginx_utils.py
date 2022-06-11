@@ -4,11 +4,15 @@ import json
 
 class NginxUtils:
 
-    def crossplane_output(self, filename):
+    def crossplane_output(self, filename, create_temporal_file):
         """ 
         Convert nginx.conf file specified in the parameter 'filename' to a JSON object using 'crossplane' application.
         """   
         result = subprocess.run(['crossplane', 'parse', '--indent=4', '--include-comments', filename], capture_output=True, text=True, check=True)
+        if create_temporal_file:
+            f = open(filename + ".json", "w")
+            f.write(result.stdout)
+            f.close()
         return json.loads(result.stdout)
 
 
