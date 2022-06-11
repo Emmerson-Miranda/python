@@ -41,7 +41,9 @@ https://docs.pytest.org/en/stable/getting-started.html
 
 Example
 ````
-pytest nginx_test.py -s 
+pytest nginx_test.py -v 
 ````
+
+![Test results](./img/test_output.png)
 
 
