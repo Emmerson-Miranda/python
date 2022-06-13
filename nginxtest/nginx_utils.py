@@ -1,5 +1,5 @@
-import subprocess
 import json
+import crossplane
 
 
 class NginxUtils:
@@ -8,12 +8,12 @@ class NginxUtils:
         """ 
         Convert nginx.conf file specified in the parameter 'filename' to a JSON object using 'crossplane' application.
         """   
-        result = subprocess.run(['crossplane', 'parse', '--indent=4', '--include-comments', filename], capture_output=True, text=True, check=True)
+        result = crossplane.parse(filename)
         if create_temporal_file:
             f = open(filename + ".json", "w")
-            f.write(result.stdout)
+            f.write(json.dumps(result))
             f.close()
-        return json.loads(result.stdout)
+        return result
 
 
     def get_location(self, uri, locations):
