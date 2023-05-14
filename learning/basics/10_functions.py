@@ -1,6 +1,8 @@
 
 # Docstrings conventions:  https://peps.python.org/pep-0257/ 
 
+line = "-" * 80
+
 def ask_number():
     str = input("introduce a number: ")
     return int(str)
@@ -44,22 +46,23 @@ def is_even(num):
 # Like java, parameters are passed by value for primitives (int,string) and by reference in case of lists
 #
 
-print("--01--" * 20)
-print("Addition")
+print(line, "01 Addition", line, sep="\n")
+
 ix = ask_number()
 iy = ask_number_v2()
 res = add_numbers(ix, iy)
 print_result(res) 
 print("Is even:", is_even(res))
 
-print("--02--" * 20)
-print("Division")
+print(line, "02 Division", line, sep="\n")
+
 print_result( divide_numbers(ix, iy))     # parameter position matter
 print_result( divide_numbers(y=iy, x=ix)) # you can pass parameters using the variable name, parameter posistion does not matter
 
 
 # variable scopes
-print("--03--" * 20)
+print(line, "03 Variable scopes", line, sep="\n")
+
 num = 100
 global_num = 200
 def print_num():
@@ -74,3 +77,34 @@ print_num()
 print("Num value outside the method is:", num)
 print("Global num value outside the method is:", global_num)
 print("Local num value outside the method is:", local_num)
+
+
+# Dinamic parameter number
+print(line, "04 Dynamic parameter number", line, sep="\n")
+
+def my_function(*students):
+  print("The tallest student is " + students[2])
+
+my_function("James", "Ella", "Jackson")
+
+
+# Inner function
+print(line, "05 Inner function", line, sep="\n")
+
+def my_function():
+  x = 20
+  def my_inner_function():
+    print(x)
+  my_inner_function()
+my_function()
+
+
+# Tuple
+print(line, "05 Tuple", line, sep="\n")
+
+def my_function(*argv):
+  print(argv)
+
+my_function('Hello', 'World!')
+
+print(line)

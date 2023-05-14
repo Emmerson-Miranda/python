@@ -9,10 +9,10 @@
 # Practice Exponential
 # END LAB DEFINITION
 
-repetitions = 80
+line = "-" * 80
 
 # Add
-print("-" * repetitions)
+print(line, "| 01 Add", line, sep="\n")
 
 x,y = (1, 2)
 print("(1)", x + y)
@@ -27,7 +27,7 @@ x,y = (5.0, 1)
 print("(4)", x + y)
 
 # Substract
-print("-" * repetitions)
+print(line, "| 02 Substract", line, sep="\n")
 
 x,y = (6, 1)
 print("(5)", x - y)
@@ -39,7 +39,7 @@ x,y = (6, 0.3)
 print("(7)", x - y)
 
 # Multiply
-print("-" * repetitions)
+print(line, "| 03 Multiply", line, sep="\n")
 
 x,y = (6, 1)
 print("(8)", x * y)
@@ -51,7 +51,7 @@ x,y = (6, .5)
 print("(10)", x * y)
 
 # Divide
-print("-" * repetitions)
+print(line, "| 04 Divide", line, sep="\n")
 
 x,y = (6, 2)
 print("(11)", x / y)
@@ -63,7 +63,7 @@ x,y = (6.0, .2)
 print("(13)", x / y)
 
 # Floor divide
-print("-" * repetitions)
+print(line, "| 05 Floor divide", line, sep="\n")
 
 x,y = (6, 2)
 print("(14)", x // y)
@@ -75,7 +75,7 @@ x,y = (6.0, .2)
 print("(16)", x // y)
 
 # Modulo
-print("-" * repetitions)
+print(line, "| 06 Modulo", line, sep="\n")
 
 x,y = (9, 5)
 print("(17)", x % y)
@@ -84,7 +84,7 @@ x,y = (8.0, 5)
 print("(18)", x % y)
 
 # Exponential
-print("-" * repetitions)
+print(line, "| 07 Expotential", line, sep="\n")
 
 x,y = (2, 3)
 print("(19)", x ** y)

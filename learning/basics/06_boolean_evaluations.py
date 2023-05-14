@@ -5,10 +5,10 @@
 # Practice not
 # END LAB DEFINITION
 
-repetitions = 80
+line = "-" * 80
 
 # AND (evaluation can be on the fly)
-print("-" * repetitions)
+print(line, "| 01 and", line, sep="\n")
 
 a,b=True,True
 print("(1) and evaluation", a and b)
@@ -23,7 +23,7 @@ a,b=False,False
 print("(4) and evaluation", a and b)
 
 # OR (evaluation can be assigned to a variable)
-print("-" * repetitions)
+print(line, "| 02 or", line, sep="\n")
 
 a,b=True,True
 condition = a or b
@@ -42,7 +42,7 @@ condition = a or b
 print("(8) or evaluation", condition)
 
 # NOT 
-print("-" * repetitions)
+print(line, "| 03 not", line, sep="\n")
 a,b=True,False
 
 condition = not a
@@ -52,7 +52,7 @@ condition = not b
 print("(10) not evaluation", condition)
 
 # Multiple conditions 
-print("-" * repetitions)
+print(line, "| 04 multiple conditions", line, sep="\n")
 
 evaluation = (True or False) and (True and True)
 print("(13) evaluation", evaluation)
