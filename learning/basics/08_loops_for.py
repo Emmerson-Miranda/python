@@ -2,6 +2,11 @@
 # Explore loops.
 # Practice for with break an continue
 # END LAB DEFINITION
+
+#
+# https://docs.python.org/3/tutorial/controlflow.html#for-statements
+# https://docs.python.org/3/tutorial/controlflow.html#the-range-function
+#
 line = "-" * 80
 
 # for using a variable to set a range

@@ -99,7 +99,7 @@ def my_function():
 my_function()
 
 
-# Tuple
+# Tuple - is a collection of items that are ordered, unchangeable, and allow duplicate values.
 print(line, "05 Tuple", line, sep="\n")
 
 def my_function(*argv):

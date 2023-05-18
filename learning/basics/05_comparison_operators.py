@@ -7,6 +7,9 @@
 # Practice less than (<)
 # Practice less or equals than (<=)
 # END LAB DEFINITION
+#
+# https://docs.python.org/3/tutorial/controlflow.html#if-statements
+#
 
 name_1_str = input("Introduce first person's name: ") 
 name_2_str = input("Introduce second person's name: ") 
