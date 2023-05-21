@@ -36,4 +36,9 @@ message="hello WORLD"
 for i in message:
     print(i.lower())
 
+print(line, "| 06 dir", line, sep="\n")
+# https://www.askpython.com/python/examples/find-all-methods-of-class
+for method in dir():
+    print(method)
+
 print(line)
