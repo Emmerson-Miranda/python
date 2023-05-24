@@ -2,6 +2,9 @@ import platform
 
 line = "-" * 80
 
+line = "-" * 80
+print(line, "| Module" + __name__, line, sep="\n")
+
 print(line, "| 01 dir", line, sep="\n")
 print(dir(platform))
 

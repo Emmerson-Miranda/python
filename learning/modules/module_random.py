@@ -3,6 +3,8 @@ from random import randrange
 from random import choice
 
 line = "-" * 80
+print(line, "| Module" + __name__, line, sep="\n")
+
 
 print(line, "| 00.", line, sep="\n")
 print(dir(random))

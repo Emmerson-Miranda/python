@@ -13,7 +13,6 @@ print("Hello world")
 
 # 2 - multiple parametes
 print("This", "is", "a", "hello", "world")
-
 # 3 - custom parameter separator 
 print("This", "is", "a", "hello", "world",  sep="-")
 

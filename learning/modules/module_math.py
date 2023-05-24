@@ -6,6 +6,8 @@ import math
 from math import pi as mypi
 
 line = "-" * 80
+print(line, "| Module" + __name__, line, sep="\n")
+
 
 print(line, "| 01 import, from, pi", line, sep="\n")
 f = math.cos(math.pi / 4)
