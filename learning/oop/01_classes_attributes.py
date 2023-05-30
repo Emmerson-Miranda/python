@@ -1,6 +1,6 @@
 
 class MyClass01:
-    pass
+    pass #https://www.w3schools.com/python/ref_keyword_pass.asp
 
 
 class MyClass02:
