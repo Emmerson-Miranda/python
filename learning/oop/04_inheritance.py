@@ -136,7 +136,7 @@ if __name__ == '__main__':
     print("Class", type(aquatic).__name__, " base ", Aquatic.__bases__)
     print("Class", type(boat).__name__,    " base ", Boat.__bases__)
     print("Class", type(amphibious).__name__,  " base ", Amphibious.__bases__)
-    print("Class", type(amphibious2).__name__, " base ", Amphibious2.__bases__)
+    print("Class", type(amphibious2).__name__, " base ", Amphibious2.__bases__, "\n\n")
 
     print(line, "| 09 isinstance", line, sep="\n")
     print("vehicle is Vehicle", isinstance(vehicle, Vehicle))
