@@ -1,8 +1,10 @@
 # https://realpython.com/python-lambda/#decorators
 # allows adding a behavior to a function or a class
 import sys
-sys.path.insert(0, '../modules')
-from utilities import print_header
+#sys.path.insert(0, '../modules')
+#from utilities import print_header
+
+from learning.modules.utilities import print_header
 
 def some_decorator(f):
     def wraps(*args):

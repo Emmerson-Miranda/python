@@ -1,8 +1,9 @@
 # https://wiki.python.org/moin/Generators
-
-import sys
-sys.path.insert(0, '../modules')
-from utilities import print_header
+# Generator functions allow you to declare a function that behaves like an iterator, i.e. it can be used in a for loop.
+from learning.modules.utilities import print_header
+# import sys
+# sys.path.insert(0, '../modules')
+# from utilities import print_header
 
 # range generator
 print_header("01 range generation")

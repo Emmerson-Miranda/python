@@ -1,8 +1,9 @@
 # https://realpython.com/python-data-types/#type-conversion
 # we can import modules in different locations using sys
-import sys
-sys.path.insert(0, '../modules')
-from utilities import print_header
+from learning.modules.utilities import print_header
+# import sys
+# sys.path.insert(0, '../modules')
+# from utilities import print_header
 
 
 int_int_value = 100

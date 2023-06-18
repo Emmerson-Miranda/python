@@ -1,8 +1,14 @@
 # https://realpython.com/python-lambda/
+# https://www.w3schools.com/python/python_lambda.asp
+# Python lambdas are little, anonymous functions, subject to a more restrictive
+# but more concise syntax than regular Python functions.
+# A lambda function can take any number of arguments, but can only have one expression.
 
-import sys
-sys.path.insert(0, '../modules')
-from utilities import print_header
+from functools import reduce
+from learning.modules.utilities import print_header
+#import sys
+#sys.path.insert(0, '../modules')
+#from utilities import print_header
 
 print_header("01 named lambda with two parameters")
 named_lambda = (lambda x, y, z: x + y + z)
@@ -38,7 +44,7 @@ elems = [1, "hello", 0.5, "world", 10.0, "\n"]
 numbers = list(filter(lambda e: isinstance(e, int) or isinstance(e, float), elems))
 print(numbers)
 
-print_header("08 sorting books")
+print_header("08 sorting with lambda")
 books = [
     {'year': 1955, 'name': 'Pedro paramo'},
     {'year': 1265, 'name': 'Divina comedia'},
@@ -49,4 +55,18 @@ books = [
 sorted_books = sorted(books, key=lambda x: x['year'])
 print("Before order:", books)
 print("After order :", sorted_books)
+
+animal_list = ['cat', 'dog', 'cow', 'bird', 'rabbit', 'snake']
+animal_list.sort()
+print('Animals', animal_list)
+
+u_animals = list(map(lambda a: a.upper(), animal_list))
+print('Uppercase Animals as lambda:', u_animals)
+u_animals = [e.upper() for e in animal_list]
+print('Uppercase Animals as List comprehension:', u_animals)
+
+a_animals = list(filter(lambda e: 'a' in e, animal_list))
+print('Animals with a:', a_animals)
+
+print('Reduced', reduce(lambda acc, e: f'{acc} | {e}', animal_list))
 
