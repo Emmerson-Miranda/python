@@ -27,7 +27,7 @@ print('sys.builtin_module_names:', sys.builtin_module_names)
 print('sys.path (original)     :', sys.path)
 
 # https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH
-PYTHONPATH = os.getenv('PYTHONPATH')
+PYTHONPATH = os.getenv('PYTHONPATH')  # os.environ.get('PYTHONPATH')
 print('PYTHONPATH              :', PYTHONPATH)
 
 sys.path.insert(0, '../modules')
