@@ -16,7 +16,6 @@ finally:
     print("FINALLY of try catch")
 
 
-
 print(line, "| 02 try except else finally", line, sep="\n")
 try:
     print("TRY block running")
@@ -33,11 +32,13 @@ finally:
 
 print(line, "| 03 raise an exception", line, sep="\n")
 
+
 def raise_exception(x):
     if x < 0:
         raise Exception("Sorry, number is below zero") 
     else:
         print(x, "The number is greater than zero")
+
 
 try:
     raise_exception(1)
@@ -47,11 +48,14 @@ except Exception as myexception:
 
 
 print(line, "| 04 raise type error", line, sep="\n")
+
+
 def raise_exception_type(x):
     if not type(x) is int:
       raise TypeError("Only integers are allowed") 
     else:
         print(x, "is a valid integer.")
+
 
 try:
     raise_exception_type(1)

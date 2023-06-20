@@ -6,6 +6,7 @@ PCAP-31-03 1.4 – Discover host platform properties using the platform module
 
 import os
 import platform
+import sys
 
 
 def main(name):
@@ -46,8 +47,6 @@ def main(name):
 
     print('os.urandom:', os.urandom(4))
 
-
-
     print('Current Working Directory:', os.getcwd())
 
     folder = './os_mkdir'
@@ -66,14 +65,20 @@ def main(name):
         print('Creating folder', folder)
         os.mkdir(folder)
 
-    print('Folder content:', os.listdir('.'))
+    print('os.listdir:', os.listdir('.'))
 
     with os.scandir(os.getcwd()) as it:
         for entry in it:
             if not entry.name.endswith('.py') and entry.is_file():
-                print(entry.name)
+                print('\t', entry.name)
 
     output = os.system(f'mkdir -p {folder}')  # for more power use subprocess
+
+    script_location = sys.argv[0]
+    print('sys.argv[0]    :', script_location)
+    script_folder = os.path.dirname(script_location)
+    print('os.path.dirname:', script_folder)
+    print('CWD            :', os.getcwd())
 
 
 if __name__ == '__main__':
