@@ -47,25 +47,15 @@ class DictWrapper:
         """
         if isinstance(json_obj, dict):
             for el in json_obj.items():
-                n = el[0]
-                v = el[1]
+                n, v = el[0], el[1]
                 if isinstance(v, dict):
-                    nv = DictWrapper(v)
-                    DictWrapper.set_attribute(instance, n, nv)
+                    DictWrapper.set_attribute(instance, n, DictWrapper(v))
                 elif isinstance(v, list):
-                    li = []
-                    for ele in v:
-                        nv = DictWrapper(ele)
-                        li.append(nv)
-                    DictWrapper.set_attribute(instance, n, li)
+                    DictWrapper.set_attribute(instance, n, [DictWrapper(ele) for ele in v])
                 else:
                     DictWrapper.set_attribute(instance, n, v)
         if isinstance(json_obj, list):
-            li = []
-            for el in json_obj:
-                nv = DictWrapper(el)
-                li.append(nv)
-            DictWrapper.set_attribute(instance, 'list', li)
+            DictWrapper.set_attribute(instance, 'list', [DictWrapper(el) for el in json_obj])
 
     def __repr__(self):
         """
