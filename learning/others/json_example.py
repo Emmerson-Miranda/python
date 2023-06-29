@@ -74,6 +74,27 @@ class DictWrapper:
         return res
 
 
+class WrapperFactory:
+    """
+    This class wraps a json object and allow access the members as object attributes.
+    For more detail read DictWrapper.
+
+    Example:
+        Json format: json_obj1[1]["email"]
+        
+        Wrap format: json_obj2[1].email
+    """
+
+    @staticmethod
+    def wrap(json_obj):
+        res = None
+        if isinstance(json_obj, dict):
+            return DictWrapper(json_obj)
+        if isinstance(json_obj, list):
+            return [DictWrapper(el) for el in json_obj]
+        raise Exception(f'Type({type(json_obj)}) handing not implemented yet!')
+
+
 json_txt = """
     {  
         "employee": {  
@@ -90,7 +111,7 @@ print(json_formatted_str)
 print('json_obj1["employee"] :', json_obj1["employee"])
 print('json_obj1["employee"]["name"] :', json_obj1["employee"]["name"])
 
-json_obj2 = DictWrapper(json_obj1)
+json_obj2 = WrapperFactory.wrap(json_obj1)
 print('json_obj2.employee :', json_obj2.employee)
 print('json_obj2.employee.name : ', json_obj2.employee.name)
 print('json_obj2 :', json_obj2)
@@ -117,7 +138,7 @@ print('json_obj1["menu"]["id"] :', json_obj1["menu"]["id"])
 print('json_obj1["menu"]["popup"]["menuitem"][1] :', json_obj1["menu"]["popup"]["menuitem"][1])
 print('json_obj1["menu"]["popup"]["menuitem"][1]["onclick"] :', json_obj1["menu"]["popup"]["menuitem"][1]["onclick"])
 
-json_obj2 = DictWrapper(json_obj1)
+json_obj2 = WrapperFactory.wrap(json_obj1)
 print('json_obj2.menu.id:', json_obj2.menu.id)
 print('json_obj2.menu.popup.menuitem[1] :', json_obj2.menu.popup.menuitem[1])
 print('json_obj2.menu.popup.menuitem[1].onclick :', json_obj2.menu.popup.menuitem[1].onclick)
@@ -136,7 +157,7 @@ print(json_formatted_str)
 print('json_obj1 :', json_obj1)
 print('json_obj1[1]["email"] :', json_obj1[1]["email"])
 
-json_obj2 = DictWrapper(json_obj1)
+json_obj2 = WrapperFactory.wrap(json_obj1)
 print('json_obj2 :', json_obj2)
-print('json_obj2.list[1].email :', json_obj2.list[1].email)
+print('json_obj2[1].email :', json_obj2[1].email)
 
