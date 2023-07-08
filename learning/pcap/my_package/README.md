@@ -5,6 +5,9 @@ https://packaging.python.org/en/latest/guides/distributing-packages-using-setupt
 
 https://jfrog.com/help/r/jfrog-artifactory-documentation/pypi-repositories
 
+https://realpython.com/pypi-publish-python-package/
+
+
 # setup.py
 
 The setup.py script builds your code into a distribution. It looks for packages inside the root folder, 

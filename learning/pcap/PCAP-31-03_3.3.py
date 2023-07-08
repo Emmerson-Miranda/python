@@ -49,6 +49,8 @@ fruits.reverse()
 print("reverse        :", fruits)
 
 # sorted, sort
+# sort() method has no return value and directly modifies the original list
+# sorted() function has a return value, which is a sorted copy of the original list
 books = [
     {'year': 1955, 'name': 'Pedro paramo'},
     {'year': 1265, 'name': 'Divina comedia'},
