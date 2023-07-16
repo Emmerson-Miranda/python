@@ -19,14 +19,14 @@ In this way you make sure setup.py will find a package with the name my_package.
 ## setup.cfg
 ini file that contains option defaults for setup.py commands.   
 
-## README.rst / README.md¶
+## README.rst / README.md
 All projects should contain a readme file that covers the goal of the project.
 
-## MANIFEST.in¶
+## MANIFEST.in
 A MANIFEST.in is needed when you need to package additional files that are not automatically included 
 in a source distribution.
 
-## LICENSE.txt¶
+## LICENSE.txt
 Every package should include a license file detailing the terms of distribution.
 
 # Development mode

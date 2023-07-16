@@ -63,22 +63,22 @@ print('text[-6:-2] 4567 character  :', text[-6:-2])  # Negative Indexing
 
 # iterating
 abc = 'abcdef'
-print('Iterating over a string')
+print(f'Iterating over a string : {abc}')
 for c in abc:
     print(c, end=' ')
 print('')
 
-print('Iterating over a string using enumerate')
+print('Iterating over a string using: enumerate')
 for i, c in enumerate(abc):
     print(i, c, end=' ')
 print('')
 
 # operators: in, not in
-print("'cde' in abc     :", 'cde' in abc)
-print("'abcdef' in abc  :", 'abcdef' in abc)
-print("'abcdefg' in abc :", 'abcdefg' in abc)
-print("'ced' in abc     :", 'ced' in abc)
-print("'ced' not in abc :", 'ced' not in abc)
+print(f"'cde' in {abc}     :", 'cde' in abc)
+print(f"'abcdef' in {abc}  :", 'abcdef' in abc)
+print(f"'abcdefg' in {abc} :", 'abcdefg' in abc)
+print(f"'ced' in {abc}     :", 'ced' in abc)
+print(f"'ced' not in {abc} :", 'ced' not in abc)
 
 # concatenating
 str1 = 'Hello'

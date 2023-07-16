@@ -26,19 +26,17 @@ def main():
     my_alias_pkg.greetings('William')
 
     # https://www.askpython.com/python/examples/find-all-methods-of-class
-    for method in dir():
-        print('method:', method)
+    print('dir() :', dir())
 
-    print('type', type(dir(my_alias)))
-    for method in dir(my_alias):
-        print('method:', method)
+    print('type(dir(my_alias)) :', type(dir(my_alias)))
+    print('dir(my_alias)       :', dir(my_alias))
 
-    print('type', type(dir(my_alias.__dict__)))
-    for method in my_alias.__dict__:
-        print('method:', method)
+    print('type(dir(my_alias.__dict__)) :', type(dir(my_alias.__dict__)))
+    print('dir(my_alias.__dict__)       :', dir(my_alias.__dict__))
+
 
     # https://docs.python.org/3.9/library/sys.html#sys.path  search path for modules
-    print('sys.path', sys.path)
+    print('sys.path :', sys.path)
 
 
 if __name__ == '__main__':

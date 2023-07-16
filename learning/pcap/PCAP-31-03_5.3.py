@@ -38,6 +38,9 @@ Multiple decorators can be chained (A function can have multiple decorator)
 """
 
 
+print(f'\nSimple closure\n{"-" * 80}')
+
+
 def divider(y):
     def divide(x):
         return x / y
@@ -90,7 +93,8 @@ def multiply(x, y):
 
 add_logger = logger(add)
 print('callable(add_logger) :', callable(add_logger))
+print('add(3, 3)            :', add(3, 3))
 print('add_logger(3, 3)     :', add_logger(3, 3))
 print('add_logger(4, 5)     :', add_logger(4, 5))
-print('multiply(6, 5)     :', multiply(6, 5))
+print('multiply(6, 5)       :', multiply(6, 5))
 

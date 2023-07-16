@@ -74,10 +74,10 @@ if __name__ == '__main__':
     oc = OtherClass()
 
     for i, obj in enumerate((nc, oc)):
-        print(f'loop {i} : {obj.add()}')
+        print(f'loop {i} : {type(obj)} : {obj.add()}')
 
     def run(o):
-        return o.greetings()
+        return f'{type(o).__name__} : {o.greetings()}'
 
     animal = Cat()
     print(f'from method: {run(animal)}')

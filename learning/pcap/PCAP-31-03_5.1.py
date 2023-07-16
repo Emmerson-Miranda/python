@@ -53,8 +53,11 @@ print(f'{ob}i: i * i for i in {newlist}{cb} : {squares}')
 
 # Nested Comprehensions
 cities = ['Austin', 'Tacoma', 'Topeka', 'Sacramento', 'Charlotte']
-temps = {city: [0 for _ in range(7)] for city in cities}
+temps = {city: [0 for _ in range(3)] for city in cities}
 print(f'{ob}city: [0 for _ in range(7)] for city in {cities}{cb} : {temps}')
 
 matrix = [[(x * 10) + i for i in range(3)] for x in range(6)]
 print(f'[[(x * 10) + i for i in range(3)] for x in range(6)] : {matrix}')
+
+matrix = [{x: [(x * 10) + i for i in range(3)]} for x in range(6)]
+print(f'[{ob}x: [(x * 10) + i for i in range(3)]{cb} for x in range(6)] : {matrix}')

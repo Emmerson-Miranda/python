@@ -80,7 +80,8 @@ print('Printing students:')
 for s in student_objects:
     print('---')
     print('\t', s)
+    print('\t', 'Student fullname:', s.fullname)
+    # polymorphism
     p = super(type(s), s)
     print('\t', p.__str__())
-    print('\t', 'Student fullname:', s.fullname)
-    print('\t', 'pPerson fullname: ', p.fullname)
+    print('\t', 'Person fullname : ', p.fullname)

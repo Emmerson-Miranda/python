@@ -61,5 +61,5 @@ class Student(Person):
         return super().fullname.upper()
 
     def info(self):
-        return f'Name: {__name__}, Module: {self.__module__} , Bases: {Student.__bases__}'
+        return f'Name: {__name__}, Module: {self.__module__} , Bases: {Student.__bases__}, File: {__file__}'
 

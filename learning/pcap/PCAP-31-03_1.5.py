@@ -15,11 +15,9 @@ import sys
 import my_module
 import my_package.my_subpackage.my_module
 
-print('my_module.public_value', my_module.public_value)
-print('my_package.my_subpackage.my_module.public_value', my_package.my_subpackage.my_module.public_value)
-print('Folder content:')
-for f in os.listdir('.'):
-    print('\t', f)
+print('my_module.public_value  :', my_module.public_value)
+print('my_package.my_subpackage.my_module.public_value :', my_package.my_subpackage.my_module.public_value)
+print("os.listdir('.')         :", os.listdir('.'))
 
 print('IMPORT STATEMENT SEARCH ORDER')
 # https://docs.python.org/3/tutorial/modules.html#the-module-search-path
@@ -27,8 +25,7 @@ print('sys.builtin_module_names:', sys.builtin_module_names)
 print('sys.path (original)     :', sys.path)
 
 # https://docs.python.org/3/using/cmdline.html#envvar-PYTHONPATH
-PYTHONPATH = os.getenv('PYTHONPATH')  # os.environ.get('PYTHONPATH')
-print('PYTHONPATH              :', PYTHONPATH)
+print("os.getenv('PYTHONPATH') :", os.getenv('PYTHONPATH')) # default search path for module files.
 
 sys.path.insert(0, '../modules')
-print('sys.path (manipulated)  :', sys.path)
+print('sys.path (after sys.path.insert)  :', sys.path)

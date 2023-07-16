@@ -7,14 +7,14 @@ PCAP-31-03 3.3 – Employ built-in string methods
 
 # join
 str1, str2 = 'Hello', 'world'
-print('concatenating', '\'.\'.join(str2)      : ', '.'.join(str2))
-print('concatenating', '\'.\'.join(str1,str2) : ', '.'.join([str1, str2]))
+print('join', '\'.\'.join(str2)      : ', '.'.join(str2))
+print('join', '\'.\'.join(str1,str2) : ', '.'.join([str1, str2]))
 
 # split
 text = 'This is a text message'
-print(f"split '{text}' ", text.split())
-print(f"split '{text}' ", text.split('t'))
-print(f"split '{text}' ", text.split('text'))
+print('split', f"{text}.split()       :", text.split())
+print('split', f"{text}.split('t')    :", text.split('t'))
+print('split', f"{text}.split('text') :", text.split('text'))
 
 # index
 print('index', f"'{text}'.index('s')     :", text.index('s'))

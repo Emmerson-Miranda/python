@@ -11,16 +11,16 @@ import sys
 
 def main(name):
 
-    print('Caller', name)
-    print('Module', __name__)
+    print('Caller : ', name)
+    print('Module : ', __name__)
 
-    print('platform.machine', platform.machine())  # x86_64
-    print('platform.processor', platform.processor())  # i386
-    print('platform.system', platform.system())  # Darwin
-    print('platform.version', platform.version())  # Darwin Kernel Version 22.4.0:...; root:xnu-8796.101.5...
-    print('platform.python_implementation', platform.python_implementation())  # CPython
-    print('platform.python_version_tuple', platform.python_version_tuple())  # ('3', '9', '16')
-    print('platform.uname', platform.uname())
+    print('platform.machine              :', platform.machine())  # x86_64
+    print('platform.processor            :', platform.processor())  # i386
+    print('platform.system               :', platform.system())  # Darwin
+    print('platform.version              :', platform.version())  # Darwin Kernel Version 22.4.0:...; root:xnu-8796.101.5...
+    print('platform.python_implementation:', platform.python_implementation())  # CPython
+    print('platform.python_version_tuple :', platform.python_version_tuple())  # ('3', '9', '16')
+    print('platform.uname                :', platform.uname())
     """
     uname_result(
       system='Darwin', 
@@ -30,7 +30,7 @@ def main(name):
       machine='x86_64')
     """
 
-    print('os.uname:', os.uname())
+    print('os.uname                      :', os.uname())
     """
     os.uname: posix.uname_result(
       sysname='Darwin', 
@@ -40,14 +40,12 @@ def main(name):
       machine='x86_64')
     """
 
-    print('os.name:', os.name)
+    print('os.name                       :', os.name)
     """
     os.name: posix
     """
 
-    print('os.urandom:', os.urandom(4))
-
-    print('Current Working Directory:', os.getcwd())
+    print('os.urandom                    :', os.urandom(4))
 
     folder = './os_mkdir'
     if os.path.exists(folder):
@@ -68,17 +66,15 @@ def main(name):
     print('os.listdir:', os.listdir('.'))
 
     with os.scandir(os.getcwd()) as it:
-        for entry in it:
-            if not entry.name.endswith('.py') and entry.is_file():
-                print('\t', entry.name)
+        scan_list = [entry.name for entry in it if not entry.name.endswith('.py') and entry.is_file()]
+        print('os.scandir(os.getcwd())', scan_list)
 
-    output = os.system(f'mkdir -p {folder}')  # for more power use subprocess
-
-    script_location = sys.argv[0]
-    print('sys.argv[0]    :', script_location)
-    script_folder = os.path.dirname(script_location)
-    print('os.path.dirname:', script_folder)
-    print('CWD            :', os.getcwd())
+    print('os.system(mkdir -p ...)     :', os.system(f'mkdir -p {folder}')) # for more power use subprocess
+    print('sys.argv[0]                 :', sys.argv[0])
+    print('os.path.dirname(sys.argv[0]):', os.path.dirname(sys.argv[0]))
+    print('os.getcwd()                 :', os.getcwd())
+    print('os.path.abspath(__file__)   :', os.path.abspath(__file__))
+    print('os.path.dirname(os.path.abspath(__file__))  :', os.path.dirname(os.path.abspath(__file__)))
 
 
 if __name__ == '__main__':
