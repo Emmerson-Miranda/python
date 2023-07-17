@@ -71,9 +71,19 @@ print('my_tripler(11) : ', my_tripler(11))
 print(f'\nClosure / Decorator\n{"-" * 80}')
 
 # https://docs.python.org/3/library/logging.html#logrecord-attributes
-FORMAT = '%(asctime)s %(levelno)s %(filename)s %(message)s'
-logging.basicConfig(format=FORMAT, level=logging.INFO)
+FORMAT = '%(asctime)s %(levelno)s %(levelname)s %(filename)s %(message)s'
+# simple logging
+# logging.basicConfig(format=FORMAT, level=logging.INFO)
 
+# dual logging to console and debug.log file
+logging.basicConfig(
+    level=logging.INFO,
+    format=FORMAT,
+    handlers=[
+        logging.FileHandler("debug.log"),
+        logging.StreamHandler()
+    ]
+)
 
 def logger(func):
     def log_func(*args):
