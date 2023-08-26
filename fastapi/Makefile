@@ -14,15 +14,20 @@ clean:
 	rm -rf $(VENV)
 	find . -type f -name *.pyc -delete
 	find . -type d -name __pycache__ -delete
-	find . -type d -name .pytest_cache -delete
+	rm -rf .coverage
+	rm -rf .pytest_cache
+	rm -rf htmlcov
 
 lint: venv/bin/activate
 	$(BIN)/flake8 ./app/
 
 test: lint
-	$(BIN)/pytest --cache-clear -v .
+	#$(BIN)/pytest --cache-clear -v .
+	rm -rf htmlcov
+	rm -rf .coverage
+	$(BIN)/coverage run -m pytest --cache-clear -v .
+	$(BIN)/coverage report -m
+	$(BIN)/coverage html
 
 run: test
 	$(BIN)/python3 -m app.main
-
-
