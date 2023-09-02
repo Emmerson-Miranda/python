@@ -4,6 +4,8 @@
 .PHONY: clean lint test run venv
 
 BIN=./venv/bin
+IMAGE_NAME=myfastapiimage
+IMAGE_VERSION=1.0.0
 
 venv: requirements.txt
 	python3 -m venv ./venv
@@ -21,6 +23,7 @@ lint: venv
 	$(BIN)/flake8 ./app/
 
 test: lint
+	rm -rf generated
 	$(BIN)/coverage run -m pytest --cache-clear -v .
 	$(BIN)/coverage report -m
 	$(BIN)/coverage html -d generated/coverage
@@ -28,3 +31,9 @@ test: lint
 
 run: test
 	$(BIN)/python3 -m app.main
+
+generate-image: test
+	docker build -t $(IMAGE_NAME):$(IMAGE_VERSION) .
+
+run-image:
+	docker run --rm --name $(IMAGE_NAME) -p 8000:8000 $(IMAGE_NAME):$(IMAGE_VERSION)
