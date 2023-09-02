@@ -1,4 +1,3 @@
-SHELL:=/bin/sh
 # https://www.gnu.org/software/make/manual/html_node/One-Shell.html
 # https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
 .ONESHELL:
@@ -16,7 +15,6 @@ clean:
 	find . -type d -name __pycache__ -exec rm -rf {} +
 	find . -type d -name ".pytest_cache" -exec rm -rf {} +
 	rm -rf .coverage
-	rm -rf .pytest_cache
 	rm -rf generated
 
 lint: venv
