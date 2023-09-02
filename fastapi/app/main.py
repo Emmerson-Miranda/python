@@ -1,3 +1,6 @@
+"""
+Main module, starts the http service.
+"""
 import uvicorn
 from fastapi import FastAPI
 from app.logic.calc import add
@@ -9,11 +12,20 @@ server = FastAPI()
 
 @server.get("/")
 async def root():
+    """
+    Root HTTP endpoint with generic information.
+    :return:
+    """
     return {"message": "Hello World"}
 
 
 @server.post("/addition/")
 async def addition_item(item: Item):
+    """
+    Add HTTP endpoint that takes two numbers as argument.
+    :param item: parameters
+    :return:  output of the addition
+    """
     item.result = add(item.x, item.y)
     return item
 
