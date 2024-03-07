@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-pending
+  name: nginx-pending
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-pending
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: nginx-pending
+    spec:
+      nodeSelector:
+        mylabel: anyvalue
+      containers:
+      - image: nginx
+        name: nginx-pending
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
