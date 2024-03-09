@@ -1,28 +1,26 @@
 #!/bin/bash
-#ifconfig | grep "192.168" 
 
 # creating cluster
-kind create cluster --config ./test-cluster.yaml
+kind create cluster --config misc/test-cluster.yaml
 
 # setting the environment with a deployment that always will be pending
-kubectl apply -f nginx-deployment-success.yaml
-kubectl apply -f nginx-deployment-pending.yaml
-sleep 10
-
-# python configuration
-python3 -m venv venv
-. ./venv/bin/activate
-pip install --upgrade pip > /dev/null
-pip3 install -r requirements.txt > /dev/null
+echo "------------------------------------------------"
+kubectl apply -f misc/nginx-deployment-success.yaml
+kubectl apply -f misc/nginx-deployment-pending.yaml
+kubectl get deploy
 
 # running python
-python3 -m app.main &
-sleep 30
+echo "------------------------------------------------"
+python3 -m app.main -i 3 -t 300 &
 
-# fixing pyton deployment to make it deploy
-kubectl apply -f nginx-deployment-pending-fixed.yaml
-sleep 20
+# fixing deployment to make deploy
+kubectl apply -f misc/nginx-deployment-pending-fixed.yaml > /dev/null
+python3 -m app.main -i 3 -t 300 -dn nginx-pending
 
 # finishing
-echo "Shell Script Finished!"
+sleep 10
+kubectl get deploy
 kind delete cluster --name test-cluster
+
+#kubectl wait po -l app=nginx-success --for=condition=Ready --timeout=60s
+#kubectl wait deploy/nginx-pending --for='jsonpath={.status.conditions[?(@.type=="Available")].status}=True' --timeout=60s
