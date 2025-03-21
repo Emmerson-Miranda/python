@@ -1,0 +1,7 @@
+n/values/defaults/product1.yaml
+n/values/defaults/product2.yaml
+n/values/clusters/clusterA/clusterA.yaml
+n/values/clusters/clusterD/product3.yaml
+p/values/defaults/product3.yaml
+p/values/clusters/clusterE/clusterE.yaml
+p/values/clusters/clusterA/product4.yaml
