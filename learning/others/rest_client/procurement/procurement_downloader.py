@@ -15,9 +15,15 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-def create_directories():
-    """Create necessary directories if they don't exist."""
-    directories = ['downloads', 'unzips']
+def create_directories(month_year):
+    """
+    Create necessary directories if they don't exist.
+    
+    Args:
+        month_year (str): Month and year in format 'month-year' 
+            (e.g., 'february-2025')
+    """
+    directories = ['downloads', f'unzips_{month_year}']
     for directory in directories:
         if os.path.exists(directory):
             # Remove all files in the directory
@@ -65,12 +71,14 @@ def download_file(url, filename):
         return False
 
 
-def extract_zip(zip_path):
+def extract_zip(zip_path, month_year):
     """
     Extract a zip file to the unzips directory.
 
     Args:
         zip_path (str): Path to the zip file
+        month_year (str): Month and year in format 'month-year' 
+            (e.g., 'february-2025')
 
     Returns:
         bool: True if extraction was successful, False otherwise
@@ -79,7 +87,7 @@ def extract_zip(zip_path):
         with zipfile.ZipFile(zip_path, 'r') as zip_ref:
             # Create a subdirectory with the zip filename (without extension)
             extract_dir = os.path.join(
-                'unzips',
+                f'unzips_{month_year}',
                 os.path.splitext(os.path.basename(zip_path))[0]
             )
             os.makedirs(extract_dir, exist_ok=True)
@@ -119,7 +127,8 @@ def extract_xml_data(xml_file):
             'official_name': '',
             'town': '',
             'title': '',
-            'short_descr': ''
+            'short_descr': '',
+            'xml_source': os.path.basename(xml_file)
         }
 
         # Try different paths for each field with different namespaces
@@ -194,10 +203,28 @@ def extract_xml_data(xml_file):
                     data['short_descr'] = elem.text.strip()
                     break
 
-        # Only return data if we found at least some information
-        if any(data.values()):
-            return data
-        return None
+        # Check if we have meaningful data (not just the XML source)
+        meaningful_data = {
+            k: v for k, v in data.items() 
+            if k != 'xml_source' and v
+        }
+        if not meaningful_data:
+            logger.warning(
+                f"No meaningful data found in XML file: {xml_file}"
+            )
+            return None
+
+        # Log which fields are missing
+        missing_fields = [
+            k for k, v in data.items() 
+            if k != 'xml_source' and not v
+        ]
+        if missing_fields:
+            logger.debug(
+                f"Missing fields in {xml_file}: {', '.join(missing_fields)}"
+            )
+
+        return data
 
     except ET.ParseError as e:
         logger.error(f"Error parsing XML file {xml_file}: {e}")
@@ -219,7 +246,10 @@ def save_to_csv(data_list, output_file):
         logger.warning("No data to save to CSV")
         return
 
-    fieldnames = ['date_pub', 'official_name', 'town', 'title', 'short_descr']
+    fieldnames = [
+        'date_pub', 'official_name', 'town', 'title', 'short_descr', 
+        'xml_source'
+    ]
 
     try:
         # Remove existing file if it exists
@@ -248,9 +278,10 @@ def process_xml_files(month_year):
     """
     extracted_data = []
     xml_count = 0
+    skipped_count = 0
 
     # Walk through all subdirectories in the unzips folder
-    for root, _, files in os.walk('unzips'):
+    for root, _, files in os.walk(f'unzips_{month_year}'):
         # Check if the current directory matches the month_year
         if month_year.lower() in root.lower():
             for file in files:
@@ -260,17 +291,25 @@ def process_xml_files(month_year):
                         data = extract_xml_data(xml_path)
                         if data:
                             extracted_data.append(data)
+                        else:
+                            skipped_count += 1
                         xml_count += 1
                         if xml_count % 100 == 0:
                             logger.info(f"Processed {xml_count} XML files")
                     except Exception as e:
                         logger.error(f"Error processing {xml_path}: {str(e)}")
+                        skipped_count += 1
+                        xml_count += 1
 
     if not extracted_data:
         logger.warning("No data was extracted from XML files")
     else:
         logger.info(f"Successfully processed {xml_count} XML files")
         logger.info(f"Extracted {len(extracted_data)} records with data")
+        if skipped_count > 0:
+            logger.info(
+                f"Skipped {skipped_count} files due to missing or invalid data"
+            )
 
     # Save the extracted data to CSV
     output_file = f"procurement_data_{month_year}.csv"
@@ -286,7 +325,7 @@ def process_procurement_data(month_year):
             (e.g., 'february-2025')
     """
     # Create necessary directories
-    create_directories()
+    create_directories(month_year)
     
     # Construct the API URL
     base_url = (
@@ -329,7 +368,7 @@ def process_procurement_data(month_year):
                 # Extract if it's a zip file
                 if filename.endswith('.zip'):
                     zip_path = os.path.join('downloads', filename)
-                    extract_zip(zip_path)
+                    extract_zip(zip_path, month_year)
         
         # Process all XML files after downloading and extracting
         process_xml_files(month_year)
