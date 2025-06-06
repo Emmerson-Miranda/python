@@ -12,23 +12,10 @@ make run
 
 Output
 ```text
-A question that has puzzled people for centuries!
+Chatting with llama3
+A week has 7 days because the Babylonians, who developed the seven-day cycle, believed that each day was ruled by a different planet or celestial body. They divided the circle of the zodiac into seven segments, with each segment representing a day and a corresponding planet (Sun, Moon, Mars, Mercury, Jupiter, Venus, Saturn). This 7-day cycle was later adopted by the ancient Greeks and Romans, and eventually became the standard for modern calendars.
 
-The reason we have a seven-day week is rooted in ancient Babylonian and Sumerian cultures. The Babylonians, who lived in Mesopotamia (modern-day Iraq), are believed to have developed the seven-day week around 2000 BCE.
 
-At that time, the Babylonians used a lunisolar calendar, which was based on the cycles of the moon and the sun. They divided their month into four weeks, with each week corresponding to a particular phase of the moon. This system is thought to have been influenced by the Sumerians, who also used a lunisolar calendar.
-
-The Babylonians then assigned names to each day of the week based on the seven celestial bodies they believed controlled the universe:
-
-1. Sunday (or "Sun Day") - named after the sun
-2. Monday (or "Moon Day") - named after the moon
-3. Tuesday - named after Tiw, a god associated with war and law
-4. Wednesday - named after Woden, a god associated with wisdom and poetry
-5. Thursday - named after Thor, a god associated with thunder
-6. Friday - named after Frigg, a goddess associated with love and beauty
-7. Saturday - named after Saturn (or "Shabbat" in Hebrew), the Roman god of agriculture and time
-
-These names were later adopted by the Romans, who modified them to create the modern seven-day week we use today.
-
-Interestingly, other cultures have used different numbers of days in their weeks throughout history. For example, the ancient Egyptians used a ten-day week, while the Mayans used a thirteen-day week. But the seven-day week has become the standard used globally, thanks to the Babylonian influence on Western culture.
+Chatting with llama3 using HTTP client
+The sky appears blue because of a phenomenon called Rayleigh scattering, where shorter (blue) wavelengths of light are scattered more than longer (red) wavelengths by the tiny molecules of gases in the atmosphere, such as nitrogen and oxygen. This scattering effect gives our sky its blue hue!
 ```
