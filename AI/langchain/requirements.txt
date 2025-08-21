@@ -1,4 +1,4 @@
 openai 
 jupyter
-langchain
+langchain[all]
 langchain-openai
