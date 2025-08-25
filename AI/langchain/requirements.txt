@@ -2,3 +2,4 @@ openai
 jupyter
 langchain[all]
 langchain-openai
+pydantic
