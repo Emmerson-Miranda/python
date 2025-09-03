@@ -1,0 +1,18 @@
+# Docker Compose file to set up a Redis service
+# docker compose -f lab-017-docker-compose.yaml up
+version: '3.8'
+
+services:
+  redis:
+    image: redis:8.2.1-alpine
+    container_name: redis-db
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    volumes:
+      - cache:/data
+    command: ["redis-server", "--save", "60", "1", "--loglevel", "warning", "--requirepass", "yourredispassword"]
+
+volumes:
+  cache:
+    driver: local
