@@ -1,4 +1,7 @@
-# Setup
+# Introduction
+The notebooks are based on https://notes.kodekloud.com/docs/LangChain/Introduction/Course-Introduction
+
+## Setup
 
 Install Python 3.12.2
 
